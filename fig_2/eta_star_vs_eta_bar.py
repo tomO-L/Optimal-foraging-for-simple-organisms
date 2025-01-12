@@ -1,0 +1,84 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import time
+import dill
+import simu
+import sys
+from tqdm.auto import tqdm
+import os
+
+script_dir = os.path.dirname(__file__)
+script_dir_parent = os.path.abspath(os.path.join(script_dir, os.pardir))
+
+#eta_target_1 = np.linspace(20,94,20)
+#eta_target_2 = np.linspace(94,101,20)
+#eta_target_3 = np.linspace(101,201,20)
+
+#eta_target = np.concatenate((eta_target_1,eta_target_2))
+#eta_target = np.concatenate((eta_target,eta_target_3))
+    
+eta_target = np.linspace(20,200,20)
+
+t_d0 = 1 # depletion time scale
+n_r = 20 # size in bins of the depletion section
+r = 1*n_r # physical size of the depletion section
+v_lim = 200 # maximum speed
+t_min = r/n_r/v_lim
+
+T = 100
+
+#with open("../environment.pkl", 'rb') as fileopen:
+#    rho = dill.load(fileopen) * 10
+
+for i_env in [0, 1, 2]:
+
+    rho = np.load(os.path.join(script_dir_parent, f'rho_{i_env}.npy'))
+    
+    length = len(rho)
+    
+    ### Simulation ###
+    
+    tail = n_r
+    
+    #rho = np.concatenate((rho,rho[:2*n_r]))
+    #rho = np.concatenate((rho[-2*n_r:], rho))
+    
+    eta_bar = []
+    
+    
+    for eta_star in tqdm(eta_target) :
+    
+        schedule = simu.simu(rho, T, t_d0, n_r, r, v_lim, eta_star)
+    
+        time_felt = []
+        for i in range(len(schedule)):
+            time_felt.append(np.sum(schedule[i-n_r+1:i+1]))
+        time_felt = np.array(time_felt)[tail*2:-tail-1]
+        schedule = schedule[tail*2:-tail-1]
+    
+        density_eaten = simu.depletion(rho[:-1], [t_d0, time_felt])[tail*2:-tail-1]
+        
+        total_food_eaten = np.sum(density_eaten)*r/n_r
+    
+        eta_bar.append(total_food_eaten/np.sum(schedule))
+    
+    
+    print('optimal eta* = ', eta_target[eta_bar.index(max(eta_bar))])
+    print('maximum eta_bar = ', max(eta_bar))
+    
+    np.save(os.path.join(script_dir, f'opt_{i_env}.npy'), [eta_target,eta_bar])
+    
+    #with open(f"opt_{i_env}.pkl", 'wb') as file_to_write:
+    #    dill.dump([eta_target,eta_bar], file_to_write)
+
+#plt.plot(eta_target,eta_bar_1)
+#plt.plot(eta_target,eta_bar_2)
+#plt.plot(np.linspace(0,9,2),np.linspace(0,9,2),'--')
+#plt.xlabel('eta^*')
+#plt.ylabel('eta_bar')
+#plt.show()
+
+
+    
+
+    
