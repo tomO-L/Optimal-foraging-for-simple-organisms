@@ -86,7 +86,7 @@ axes.set_aspect('equal')
 
 plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
 
-plt.savefig(os.path.join(script_dir, "images", "d.png"), dpi=my_dpi)
+#plt.savefig(os.path.join(script_dir, "images", "d.png"), dpi=my_dpi)
 
 plt.show()
 

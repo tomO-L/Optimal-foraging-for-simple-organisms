@@ -128,7 +128,7 @@ for label in (axes.get_xticklabels() + axes.get_yticklabels()):
 
 axes.set_xscale('log')
 plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
-plt.savefig('images/eta.png', dpi=my_dpi)
+#plt.savefig('images/eta.png', dpi=my_dpi)
 
 #plt.legend()
 
@@ -169,7 +169,7 @@ axes.set_xscale('log')
 axes.set_xticklabels([])
 
 plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
-plt.savefig('images/eta_m.png', dpi=my_dpi)
+#plt.savefig('images/eta_m.png', dpi=my_dpi)
 
 #plt.legend()
 plt.show()

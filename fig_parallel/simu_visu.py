@@ -123,7 +123,7 @@ axes.spines['right'].set_visible(False)
 
 plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
 
-plt.savefig('images/a.png', dpi=my_dpi)
+#plt.savefig('images/a.png', dpi=my_dpi)
 
 
 # 2
@@ -214,8 +214,7 @@ ax_bis.set_ylim(10,1.1*v_lim)
 
 plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
 
-plt.savefig('images/b.png', dpi=my_dpi)
-caca
+#plt.savefig('images/b.png', dpi=my_dpi)
 
 ax_bis.plot(x, tau, color=color_tau, linewidth = linewidth, alpha=0.6, zorder=2)
 ax_bis.set_ylabel(r'Contact time ($\tau$)',fontsize=axes_font_size)
@@ -228,32 +227,6 @@ legend_elements = [Line2D([0], [0], color='blue', label=r'Speed ($v$)'),
 
 ax_bis.set_ylim([0, 1])
 ax_bis.set_yticks([0, .5, 1])
-
-
-
-
-caca
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # 2
@@ -290,7 +263,7 @@ axes.set_xticklabels([],color='w')
 
 plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
 
-plt.savefig('images/b.png', dpi=my_dpi)
+#plt.savefig('images/b.png', dpi=my_dpi)
 
 # 2bis: Inset
 fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi*.3, image_height/my_dpi*.4), dpi=my_dpi, sharex=True)
@@ -336,7 +309,7 @@ for axis in ['top','bottom','left','right']:
 
 plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
 
-plt.savefig('images/b_inset.png', dpi=my_dpi)
+#plt.savefig('images/b_inset.png', dpi=my_dpi)
 
 
 # 3
@@ -372,7 +345,7 @@ legend_elements = [Line2D([0], [0], color='blue', label=r'Feeding rate ($\eta$)'
 
 plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
 
-plt.savefig('images/c.png', dpi=my_dpi)
+#plt.savefig('images/c.png', dpi=my_dpi)
 
 fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi*.3, image_height/my_dpi*.4), dpi=my_dpi, sharex=True)
 
@@ -406,7 +379,7 @@ legend_elements = [Line2D([0], [0], color='blue', label=r'Feeding rate ($\eta$)'
 
 plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
 
-plt.savefig('images/c_inset.png', dpi=my_dpi)
+#plt.savefig('images/c_inset.png', dpi=my_dpi)
 
 
 plt.show()

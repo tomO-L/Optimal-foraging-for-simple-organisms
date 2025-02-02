@@ -150,7 +150,7 @@ axes.set_axis_off()
 
 
 plt.subplots_adjust(top=top, bottom=bottom, right=right, left=left)
-plt.savefig('images/zero.png', dpi=my_dpi)
+#plt.savefig('images/zero.png', dpi=my_dpi)
 
 # 1
 fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True)
@@ -172,7 +172,7 @@ axes.set_yticklabels([0,5,10])
 axes.tick_params(length = ticks_length, width = ticks_width)
 
 plt.subplots_adjust(top=top, bottom=bottom, right=right, left=left)
-plt.savefig('images/a.png', dpi=my_dpi)
+#plt.savefig('images/a.png', dpi=my_dpi)
 
 
 
@@ -198,7 +198,7 @@ axes.set_yticklabels([0,5,10])
 axes.tick_params(length = ticks_length, width = ticks_width)
 
 plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
-plt.savefig('images/b.png', dpi=my_dpi)
+#plt.savefig('images/b.png', dpi=my_dpi)
 
 # 3
 fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True)
@@ -222,7 +222,7 @@ axes.set_yticklabels([0,5,10])
 axes.tick_params(length = ticks_length, width = ticks_width)
 
 plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
-plt.savefig('images/c.png', dpi=my_dpi)
+#plt.savefig('images/c.png', dpi=my_dpi)
 
 # 4
 fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True)
@@ -247,7 +247,7 @@ axes.set_yticks([1, 10, 100])
 axes.tick_params(length = ticks_length, width = ticks_width)
 
 plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
-plt.savefig('images/d.png', dpi=my_dpi)
+#plt.savefig('images/d.png', dpi=my_dpi)
 
 # 5
 fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True)
@@ -273,7 +273,7 @@ axes.set_yticks([0,1,2])
 axes.tick_params(length = ticks_length, width = ticks_width)
 
 plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
-plt.savefig('images/e.png', dpi=my_dpi)
+#plt.savefig('images/e.png', dpi=my_dpi)
 
 # 6
 fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True)
@@ -297,7 +297,7 @@ axes.set_yticks([0,1,2])
 axes.tick_params(length = ticks_length, width = ticks_width)
 
 plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
-plt.savefig('images/f.png', dpi=my_dpi)
+#plt.savefig('images/f.png', dpi=my_dpi)
 
 # 7
 fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True)
@@ -316,7 +316,7 @@ axes.set_yticks([0,2,4])
 axes.tick_params(length = ticks_length, width = ticks_width)
 
 plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
-plt.savefig('images/g.png', dpi=my_dpi)
+#plt.savefig('images/g.png', dpi=my_dpi)
 
 # 8
 fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True)
@@ -339,7 +339,7 @@ axes.set_yticks([0, 100, 200])
 axes.tick_params(length = ticks_length, width = ticks_width)
 
 plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
-plt.savefig('images/h.png', dpi=my_dpi)
+#plt.savefig('images/h.png', dpi=my_dpi)
 
 # 9
 fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True)
@@ -361,7 +361,7 @@ axes.set_yticks([0,100,200])
 axes.tick_params(length = ticks_length, width = ticks_width)
 
 plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
-plt.savefig('images/i.png', dpi=my_dpi)
+#plt.savefig('images/i.png', dpi=my_dpi)
 
 #plt.legend()
 plt.show()
@@ -394,7 +394,7 @@ axes_bis.set_xticklabels([9.15,9.7], color = 'w')
 axes_bis.set_yticks([1,2])
 
 plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
-plt.savefig('images/j.png', dpi=my_dpi)
+#plt.savefig('images/j.png', dpi=my_dpi)
 
 
 # 2 bis: Depletion rate as a function of time for one point (inset)
@@ -430,6 +430,6 @@ axes_bis.set_yticks([0,1,2])
 #fig.tight_layout()
 
 plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
-plt.savefig('images/k.png', dpi=my_dpi)
+#plt.savefig('images/k.png', dpi=my_dpi)
 
 plt.show()

@@ -69,7 +69,7 @@ axes.set_axis_off()
 
 plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
 
-plt.savefig('images/a.png', dpi=my_dpi)
+#plt.savefig('images/a.png', dpi=my_dpi)
 
 # 2
 fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True)
@@ -89,7 +89,7 @@ axes.set_axis_off()
 
 plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
 
-plt.savefig('images/b.png', dpi=my_dpi)
+#plt.savefig('images/b.png', dpi=my_dpi)
 
 # 3
 fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True)
@@ -109,6 +109,6 @@ axes.set_axis_off()
 
 plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
 
-plt.savefig('images/c.png', dpi=my_dpi)
+#plt.savefig('images/c.png', dpi=my_dpi)
 
 plt.show()

@@ -120,7 +120,7 @@ for i in range(4):
     
     plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
     
-    plt.savefig(f'images/minirho_{i}.png', dpi=my_dpi)
+    #plt.savefig(f'images/minirho_{i}.png', dpi=my_dpi)
 
     #legend_elements = [Line2D([0], [0], color='blue', label=r'Speed of the animal ($v$)'),
     #                   Line2D([0], [0], color='orange', label=r'Feeding rate ($\eta$)')]

@@ -172,7 +172,7 @@ for label in (ax_bis.get_xticklabels() + ax_bis.get_yticklabels()):
 #axes[1].set_aspect('equal')
 plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
 
-plt.savefig(f'images/v_vs_t.png', dpi=my_dpi)
+#plt.savefig(f'images/v_vs_t.png', dpi=my_dpi)
 
 plt.show()
 

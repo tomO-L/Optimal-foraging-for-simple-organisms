@@ -159,7 +159,7 @@ axes.set_xticklabels([],color='w')
 
 plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
 
-plt.savefig('images/b.png', dpi=my_dpi)
+#plt.savefig('images/b.png', dpi=my_dpi)
 
 # 2bis: Inset
 fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi*.3, image_height/my_dpi*.4), dpi=my_dpi, sharex=True)
@@ -205,7 +205,7 @@ for axis in ['top','bottom','left','right']:
 
 plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
 
-plt.savefig('images/b_inset.png', dpi=my_dpi)
+#plt.savefig('images/b_inset.png', dpi=my_dpi)
 
 
 # 3
@@ -241,7 +241,7 @@ legend_elements = [Line2D([0], [0], color='blue', label=r'Feeding rate ($\eta$)'
 
 plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
 
-plt.savefig('images/c.png', dpi=my_dpi)
+#plt.savefig('images/c.png', dpi=my_dpi)
 
 fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi*.3, image_height/my_dpi*.4), dpi=my_dpi, sharex=True)
 
@@ -275,7 +275,7 @@ legend_elements = [Line2D([0], [0], color='blue', label=r'Feeding rate ($\eta$)'
 
 plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
 
-plt.savefig('images/c_inset.png', dpi=my_dpi)
+#plt.savefig('images/c_inset.png', dpi=my_dpi)
 
 
 plt.show()

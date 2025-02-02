@@ -90,6 +90,6 @@ for label in (axes.get_xticklabels() + axes.get_yticklabels()):
     label.set_fontsize(graduation_font_size)
 
 plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
-plt.savefig('images/density.png', dpi=my_dpi)
+#plt.savefig('images/density.png', dpi=my_dpi)
 
 plt.show()

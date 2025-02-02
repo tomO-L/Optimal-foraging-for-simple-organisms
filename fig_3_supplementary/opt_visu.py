@@ -80,7 +80,7 @@ legend_elements = [Line2D([0], [0], color='blue', label=r'Average feeding rate f
 
 plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
 
-plt.savefig(os.path.join(script_dir, "images", "d.png"), dpi=my_dpi)
+#plt.savefig(os.path.join(script_dir, "images", "d.png"), dpi=my_dpi)
 
 plt.show()
 
