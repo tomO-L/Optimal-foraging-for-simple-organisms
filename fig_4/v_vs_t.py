@@ -4,10 +4,12 @@ from matplotlib.lines import Line2D
 from matplotlib.patches import Patch
 import scipy as sp
 import dill
+import os
 
+script_dir = os.path.dirname(__file__)
 name = "simulation"
 
-with open(f"{name}/{name}.pkl", 'rb') as fileopen:
+with open(os.path.join(script_dir,name,f"{name}.pkl"), 'rb') as fileopen:
         inpt, outpt = dill.load(fileopen)
 
 from simu import depletion, gamma_of_rho
@@ -73,11 +75,11 @@ for m in range(len(schedule)):
     if schedule[m]!=r/n_r/v_lim:
         
         #print(T[-1])
-        print(np.cumsum(np.ones(50)*schedule[m]/50)[-1], T[-1])
+        #print(np.cumsum(np.ones(50)*schedule[m]/50)[-1], T[-1])
         
         T = np.concatenate( ( T, ( np.cumsum(np.ones(50)*schedule[m]/50) + T[-1] ) ) )
         eta_time = np.concatenate((eta_time,eta_list_interp[k]))
-        print(T[-1])
+        #print(T[-1])
 
         k = k+1
 

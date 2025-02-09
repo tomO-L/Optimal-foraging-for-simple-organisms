@@ -37,8 +37,6 @@ tau = []
 for m in range(len(schedule)):
     tau.append(np.sum(schedule[m+1-n_r:m+1]))
 
-print(len(tau))
-
 for n in range(l):
     
     t = schedule[n]
@@ -123,7 +121,7 @@ axes.set_xticklabels([],color='w')
 
 plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
 
-plt.savefig('images/a.png', dpi=my_dpi)
+#plt.savefig('images/a.png', dpi=my_dpi)
 
 # 2
 fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True)

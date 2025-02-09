@@ -4,10 +4,12 @@ from matplotlib.lines import Line2D
 from matplotlib.patches import Patch
 import scipy as sp
 import dill
+import os
 
+script_dir = os.path.dirname(__file__)
 name = "simulation"
 
-with open(f"{name}/{name}.pkl", 'rb') as fileopen:
+with open(os.path.join(script_dir,name,f"{name}.pkl"), 'rb') as fileopen:
         inpt, outpt = dill.load(fileopen)
 
 from simu import depletion, gamma_of_rho
