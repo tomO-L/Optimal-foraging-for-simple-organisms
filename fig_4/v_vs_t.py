@@ -126,7 +126,7 @@ left=0.15
 fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True)
 
 # axes.plot(v[window+n_r:window+4*n_r+1], linewidth=linewidth)
-# caca
+
 t_show = np.cumsum(schedule)[window+n_r:window+5*n_r+1]
 axes.step(t_show, v[window+n_r:window+5*n_r+1], linewidth=linewidth, where='pre', color=color_v)
 

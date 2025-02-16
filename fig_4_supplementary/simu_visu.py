@@ -212,7 +212,7 @@ for axis in ['top','bottom','left','right']:
 
 plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
 
-plt.savefig('images/b_inset.png', dpi=my_dpi)
+#plt.savefig('images/b_inset.png', dpi=my_dpi)
 
 
 # 3

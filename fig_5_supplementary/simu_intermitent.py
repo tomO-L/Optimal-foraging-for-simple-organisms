@@ -76,7 +76,6 @@ def simu(rho_init, T, t_d0, n_r, r, v_lim, eta_target, noise=0, learning=False, 
             # print(f"alpha_now = {alpha_now}")
             # print(f"eta = {eta}")
             # print(f"eta_target = {eta_target}")
-            # caca
             
             # eta_target = (eta_target-eta)*np.exp(-alpha*(r/v/t_d0)) + eta
             #eta_star = (1-alpha)*eta_star + alpha*eta 

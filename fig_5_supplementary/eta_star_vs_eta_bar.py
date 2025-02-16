@@ -114,8 +114,6 @@ for i_env in [0, 1, 2]:
 
     np.save(os.path.join(script_dir, f'opt_intermitent_{i_env}.npy'), [eta_m_star,eta_bar])
 
-caca
-
 #plt.plot(eta_target,eta_bar_1)
 #plt.plot(eta_target,eta_bar_2)
 #plt.plot(np.linspace(0,9,2),np.linspace(0,9,2),'--')
