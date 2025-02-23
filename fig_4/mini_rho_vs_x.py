@@ -97,7 +97,7 @@ left=0.15
 
 for i in range(4):
 
-    fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi*.6, image_height/my_dpi), dpi=my_dpi, sharex=True)
+    fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi*.6, image_height/my_dpi), dpi=my_dpi, sharex=True, num='Figure 4')
 
     axes.fill_between(x, np.ones(20*n_r) * 10, color = color_rho, step='mid')#axes.set_xlim(T[599+n_r],T[599+3*n_r+1]) ### tom
     axes.fill_between(x, rho_list[i], color = 'black', alpha = 0.4, step='mid')#axes.set_xlim(T[599+n_r],T[599+3*n_r+1])

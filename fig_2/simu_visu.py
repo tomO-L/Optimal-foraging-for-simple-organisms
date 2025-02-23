@@ -100,7 +100,7 @@ xticks_environment = [0, 1000, 2000, 3000]
 
 
 # 1
-fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True)
+fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True, num='Figure 2')
 
 axes.fill_between(x, rho, color = color_rho, step="mid")
 axes.fill_between(x, rho_final, color = 'black', step="mid", alpha=0.7)

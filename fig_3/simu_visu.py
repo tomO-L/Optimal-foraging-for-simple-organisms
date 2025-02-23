@@ -98,7 +98,7 @@ left=0.15
 
 
 # 1
-fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True)
+fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True, num='Figure 3')
 
 axes.fill_between(x, rho, color = color_rho, step="mid")
 axes.fill_between(x, rho_final, color = 'black', step="mid", alpha=0.7)

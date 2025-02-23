@@ -3,7 +3,7 @@ import os
 import threading
 
 # Decide what figure to show. Set to True the variables corresponding to the figures you want to show;
-plot_fig_1 = False
+plot_fig_1 = True
 plot_fig_2 = False
 plot_fig_3 = False
 plot_fig_4 = False
@@ -33,8 +33,6 @@ if plot_fig_1:
     fig_1_path = os.path.join(main_script_dir, "fig_1")
 
     threads.append( threading.Thread(target=run_script, args=(os.path.join(fig_1_path, "simu_visu.py"),)) )
-    threads.append( threading.Thread(target=run_script, args=(os.path.join(fig_1_path, "opt_visu.py"),)) )
-
 
 # Will add Figure 2 to the list of figures to plot if plot_fig_2 is True
 if plot_fig_2:

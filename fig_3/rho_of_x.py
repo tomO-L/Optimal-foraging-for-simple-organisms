@@ -65,7 +65,7 @@ bottom=0.22
 right=0.9
 left=0.15
 
-fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True)
+fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True, num='Figure 3')
 
 pos_txt_x = 1.025
 pos_txt_y = 1

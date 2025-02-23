@@ -95,7 +95,7 @@ pos_txt_y = 1
 #print(n_r*feeding_rate(1,[t_d, r/n_r/v[500]]))
 #print(v[500])
 # 1
-fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True)
+fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True, num='Figure 3')
 
 axes.plot(np.ones(50)*200, np.linspace(0,400), color = 'black', linestyle = '--', linewidth=linewidth, label = r'$\eta_m^*$')
 

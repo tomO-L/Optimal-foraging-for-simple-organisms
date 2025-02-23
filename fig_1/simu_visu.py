@@ -136,7 +136,7 @@ left=0.15
 #########################################################
 
 # 0 2D environment and trajectory
-fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True)
+fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True, num='Figure 1 A')
 
 
 plt.imshow(environment_2D, cmap=cmap)
@@ -153,7 +153,7 @@ plt.subplots_adjust(top=top, bottom=bottom, right=right, left=left)
 #plt.savefig('images/zero.png', dpi=my_dpi)
 
 # 1
-fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True)
+fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True, num='Figure 1 B')
 
 axes.fill_between(x, rho[:l], color = color_rho)
 axes.set_xlim(min(x),max(x))
@@ -177,7 +177,7 @@ plt.subplots_adjust(top=top, bottom=bottom, right=right, left=left)
 
 
 # 2
-fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True)
+fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True, num='Figure 1 E')
 
 axes.fill_between(x, rho[:l], color = color_rho)
 axes.plot(np.ones(50)*mid, np.linspace(0,20), '--', color = color_meta)
@@ -201,7 +201,7 @@ plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
 #plt.savefig('images/b.png', dpi=my_dpi)
 
 # 3
-fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True)
+fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True, num='Figure 1 H')
 
 axes.fill_between(x, rho[:l], color = color_rho)
 axes.fill_between(x, rho_final[:l], color = 'black', alpha=0.7)
@@ -225,7 +225,7 @@ plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
 #plt.savefig('images/c.png', dpi=my_dpi)
 
 # 4
-fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True)
+fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True, num='Figure 1 C')
 
 axes.plot(x, v_lim*np.ones(len(x)), color='black', linestyle='--')
 axes.plot(x, v, color = color_v, linewidth = linewidth)
@@ -250,7 +250,7 @@ plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
 #plt.savefig('images/d.png', dpi=my_dpi)
 
 # 5
-fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True)
+fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True, num='Figure 1 F')
 
 axes.plot(x, gamma, color = 'black', linewidth = linewidth, zorder=4)
 axes.scatter(local_time_pos,gamma[local_time_pos], color='black', s=80, zorder=5)
@@ -276,7 +276,7 @@ plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
 #plt.savefig('images/e.png', dpi=my_dpi)
 
 # 6
-fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True)
+fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True, num='Figure 1 I')
 
 axes.plot(x, marginal_gamma, color = 'black', linewidth = linewidth)
 axes.fill_between(x, marginal_gamma, color = color_eta_m, linewidth = linewidth, alpha=0.5)
@@ -300,7 +300,7 @@ plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
 #plt.savefig('images/f.png', dpi=my_dpi)
 
 # 7
-fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True)
+fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True, num='Figure 1 D')
 
 axes.plot(x, tau, color = color_tau, linewidth = linewidth)
 axes.set_xlim(min(x),max(x))
@@ -319,7 +319,7 @@ plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
 #plt.savefig('images/g.png', dpi=my_dpi)
 
 # 8
-fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True)
+fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True, num='Figure 1 G')
 
 axes.plot(x[:mid], eta_list[:mid], color = color_eta, linewidth = linewidth)
 axes.plot(x[mid:], eta_list[mid:], linestyle = ':', color = color_eta, linewidth = linewidth)
@@ -342,7 +342,7 @@ plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
 #plt.savefig('images/h.png', dpi=my_dpi)
 
 # 9
-fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True)
+fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True, num='Figure 1 J')
 
 axes.plot(x, eta_m_list, color = color_eta_m, linewidth = linewidth)
 axes.set_xlim(min(x),max(x))
@@ -367,7 +367,7 @@ plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
 plt.show()
 
 # 1 bis: Density as a function of time for one point (inset)
-fig,axes_bis = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True)
+fig,axes_bis = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True, num='Figure 1 F inset 1')
 
 axes_bis.plot(np.linspace(np.sum(schedule[:mid])-tau[mid],np.sum(schedule[:mid])+tau[mid],2*res)[:mid_mid_index], local_rho_ex[:mid_mid_index], color = color_rho, linewidth = linewidth*factor_inset)
 axes_bis.plot(np.linspace(np.sum(schedule[:mid])-tau[mid],np.sum(schedule[:mid])+tau[mid],2*res)[mid_mid_index-1:], local_rho_ex[mid_mid_index-1:], linestyle = ':', color = color_rho, linewidth = linewidth*factor_inset)
@@ -398,7 +398,7 @@ plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
 
 
 # 2 bis: Depletion rate as a function of time for one point (inset)
-fig,axes_bis = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True)
+fig,axes_bis = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True, num='Figure 1 F inset 2')
 
 axes_bis.plot(np.linspace(np.sum(schedule[:mid])-tau[mid],np.sum(schedule[:mid])+tau[mid],2*res)[:res], local_gamma_ex[:res], color = 'black', linewidth = linewidth*factor_inset)
 axes_bis.plot(np.linspace(np.sum(schedule[:mid])-tau[mid],np.sum(schedule[:mid])+tau[mid],2*res)[res:mid_mid_index], local_gamma_ex[res:mid_mid_index], color = 'black', linewidth = linewidth*factor_inset)
