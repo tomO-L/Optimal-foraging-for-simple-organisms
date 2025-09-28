@@ -23,7 +23,7 @@ def depletion(rho_r, pars):
 
 def simu(rho_init, T, t_d0, n_r, r, v_lim, eta_target, noise_std_ratio = 0.01, noise=0, learning=False, trade_off=False, alpha=0, a=1):
 
-    rho = np.ones(len(rho_init))#np.copy(rho_init)
+    rho = np.copy(rho_init)
     rho = np.concatenate((rho,rho[:2*n_r]))
     rho = np.concatenate((rho[-2*n_r:], rho))
     rho_0 = np.copy(rho)
@@ -50,7 +50,7 @@ def simu(rho_init, T, t_d0, n_r, r, v_lim, eta_target, noise_std_ratio = 0.01, n
 
         ### Speed ###
             
-        v = 3
+        v = 100
             
         ### Mouth jitter ###
 
@@ -121,7 +121,7 @@ if __name__=='__main__':
     #     rho = pk.load(fileopen) * 10
         
     rho = np.load(os.path.join(script_dir_parent, 'rho_0.npy'))
-
+    rho = np.ones(len(rho))
 
     ### Simulation ###
     inpt = [rho, T, t_d0, n_r, r, v_lim, eta_target, noise, learning, trade_off, alpha, a]

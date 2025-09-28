@@ -37,12 +37,44 @@ tau = []
 for m in range(len(schedule)):
     tau.append(np.sum(schedule[m+1-n_r:m+1]))
 
-for n in range(l):
+noise_std_ratio = 5
+n_mouth = 0
+noise_max_memory = 5
+noise_memory = noise_max_memory
+noise_std = n_r * noise_std_ratio
+
+for n_pos in range(l):
     
-    t = schedule[n]
-    rho_depleted = depletion(rho_final[n:n + n_r], [t_d0, t])
-    rho_final[n:n + n_r] = rho_final[n:n + n_r] - rho_depleted
-    eta = np.sum(rho_depleted)*r/n_r/t
+    t = schedule[n_pos]
+    v = 1/t
+
+    if noise_memory==noise_max_memory:
+
+        noise = np.random.normal(scale = noise_std)
+        noise = int(np.round(noise))
+        noise_memory = 0
+
+    while n_pos+noise<0 or n_pos+noise>l:
+
+        noise = np.random.normal(scale = noise_std)
+        noise = int(np.round(noise))
+
+    else: 
+            
+        noise_memory += 1
+
+    ###
+    n_mouth = n_pos + noise
+    print(n_mouth)
+        
+    ### Feeding ###
+
+    rho_depleted = depletion(rho_final[n_mouth:n_mouth + n_r], [t_d0, r / n_r / v, ])
+    rho_final[n_mouth:n_mouth + n_r] = rho_final[n_mouth:n_mouth + n_r] - rho_depleted
+    eta = np.sum(rho_depleted) * v 
+
+    n_pos = n_pos + 1
+
     eta_list.append(eta)
 
 for i in range(l):
