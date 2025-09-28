@@ -31,6 +31,7 @@ def simu(rho_init, T, t_d0, n_r, r, v_lim, eta_target, noise_std_ratio = 0.01, n
     v = 2.5
     v_list = []
 
+    ### TEST ###
     ### Noise and mouth parameters ###
     n_mouth = 0
     noise_max_memory = 5
@@ -42,16 +43,13 @@ def simu(rho_init, T, t_d0, n_r, r, v_lim, eta_target, noise_std_ratio = 0.01, n
     n_pos = 0
     t = 0
 
-    n_stop = n_r
-    jump_size = n_r
-
-
     while n_pos + n_r < length:
 
         ### Speed ###
             
-        v = 100
+        v = 200
             
+        ### TEST ###
         ### Mouth jitter ###
 
         if noise_memory==noise_max_memory:

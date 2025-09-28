@@ -37,6 +37,7 @@ tau = []
 for m in range(len(schedule)):
     tau.append(np.sum(schedule[m+1-n_r:m+1]))
 
+### TEST ###
 noise_std_ratio = 5
 n_mouth = 0
 noise_max_memory = 5
