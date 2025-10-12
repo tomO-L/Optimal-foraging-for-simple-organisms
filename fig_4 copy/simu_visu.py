@@ -44,6 +44,8 @@ noise_max_memory = 5
 noise_memory = noise_max_memory
 noise_std = n_r * noise_std_ratio
 
+n_mouth_list = []
+
 for n_pos in range(l):
     
     t = schedule[n_pos]
@@ -74,6 +76,7 @@ for n_pos in range(l):
     rho_final[n_mouth:n_mouth + n_r] = rho_final[n_mouth:n_mouth + n_r] - rho_depleted
     eta = np.sum(rho_depleted) * v 
 
+    n_mouth_list.append(n_mouth)
     n_pos = n_pos + 1
 
     eta_list.append(eta)
@@ -87,6 +90,7 @@ tau = tau[2*tail:-tail-1]
 schedule = schedule[2*tail:-tail-1]
 eta_list = eta_list[2*tail:-tail-1]
 eta_m_list = eta_m_list[2*tail:-tail-1]
+n_mouth_list = n_mouth_list[2*tail:-tail-1]
 
 eta_bar = np.sum(rho - rho_final)*l*r/n_r/T
 v = r/n_r/schedule
@@ -128,14 +132,42 @@ right=0.9
 left=0.15
 
 
+# 0
+fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, 1200/my_dpi), dpi=my_dpi, sharex=True)
+
+axes.plot(x, np.array(n_mouth_list) - 2*tail, color = 'red')
+axes.plot(x,x,color='k',linestyle='--', alpha=1, linewidth=2)
+axes.set_xlim(min(x),max(x))
+axes.set_ylim(min(x),max(x))
+# axes.set_yticks([0, 5, 10])
+axes.set_xlabel(r'Position ($X$)',fontsize=axes_font_size)
+axes.set_ylabel(r'Mouth position',fontsize=axes_font_size)
+#axes[0].set_title("Density profiles", fontsize = title_font_size)
+for label in (axes.get_xticklabels() + axes.get_yticklabels()):
+    label.set_fontsize(graduation_font_size)
+
+# legend_elements = [Patch(facecolor='olivedrab',
+#                          label=r'Initial food density ($\rho_0$)'),
+#                    Patch(facecolor='black', alpha=0.7,
+#                          label=r'Final food density ($\rho_f$)')]
+
+# axes.set_xticklabels([],color='w')
+
+#axes.legend(handles=legend_elements, loc='upper center', fontsize = legend_font_size, frameon=False)
+#axes[0].set_aspect('equal')
+
+plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
+
+#plt.savefig('images/a.png', dpi=my_dpi)
+
 # 1
 fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True)
 
 axes.fill_between(x, rho, color = color_rho, step="mid")
 axes.fill_between(x, rho_final, color = 'black', step="mid", alpha=0.7)
 axes.set_xlim(min(x),max(x))
-axes.set_ylim(0,1.1*max(rho))
-axes.set_yticks([0, 5, 10])
+# axes.set_ylim(0,1.1*max(rho))
+# axes.set_yticks([0, 5, 10])
 #axes[0].set_xlabel(r'Position ($X$)',fontsize=axes_font_size)
 axes.set_ylabel(r'Food density ($\rho$)',fontsize=axes_font_size)
 #axes[0].set_title("Density profiles", fontsize = title_font_size)
@@ -157,70 +189,24 @@ plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
 #plt.savefig('images/a.png', dpi=my_dpi)
 
 # 2
-fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True)
-zoom_region = [2450, 2800, 1.5, 250]
+# fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True)
+# zoom_region = [2450, 2800, 1.5, 250]
 
-axes.plot(x, v, color=color_v, linewidth = linewidth, zorder=1)
-axes.plot([zoom_region[_] for _ in [0, 1, 1, 0, 0]], [zoom_region[_] for _ in [2, 2, 3, 3, 2]], color="black", linewidth=1.5)
+# axes.plot(x, v, color=color_v, linewidth = linewidth, zorder=1)
+# axes.plot([zoom_region[_] for _ in [0, 1, 1, 0, 0]], [zoom_region[_] for _ in [2, 2, 3, 3, 2]], color="black", linewidth=1.5)
 
-axes.set_xlim(min(x),max(x))
-axes.set_ylim(1, 1.5*v_lim)
-axes.set_yscale('log')
-#axes[1].set_xlabel(r'Position ($X$)',fontsize=axes_font_size)
-axes.set_ylabel(r'Speed ($v$)',fontsize=axes_font_size)
-#axes[1].set_title("Strategy", fontsize = title_font_size)
-for label in (axes.get_xticklabels() + axes.get_yticklabels()):
-    label.set_fontsize(graduation_font_size)
-
-ax_bis = axes.twinx()
-ax_bis.plot(x, tau, color=color_tau, linewidth = linewidth, alpha=0.6, zorder=2)
-ax_bis.set_ylabel(r'Contact time ($\tau_f$)',fontsize=axes_font_size)
-ax_bis.set_ylim(0, .8)
-ax_bis.set_yticks([0, .2, .4, .6, .8])
-for label in (ax_bis.get_xticklabels() + ax_bis.get_yticklabels()):
-    label.set_fontsize(graduation_font_size)
-
-legend_elements = [Line2D([0], [0], color='blue', label=r'Speed ($v$)'),
-                   Line2D([0], [0], color='grey', label=r'Contact time ($\tau$)')]
-
-axes.set_xticklabels([],color='w')
-
-#axes.legend(handles=legend_elements, loc='center', fontsize = legend_font_size, frameon=False)
-#axes[1].set_aspect('equal')
-
-plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
-
-#plt.savefig('images/b.png', dpi=my_dpi)
-
-# 2bis: Inset
-fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi*.3, image_height/my_dpi*.4), dpi=my_dpi, sharex=True)
-zoom_region = [2450, 2800, 1.5, 250]
-
-axes.plot(x, v, color=color_v, linewidth = linewidth, zorder=1)
-ax_bis = axes.twinx()
-ax_bis.plot(x, tau, color=color_tau, linewidth = linewidth, alpha=0.6, zorder=2)
-
-axes.set_xlim(zoom_region[0], zoom_region[1])
-ax_bis.set_xlim(zoom_region[0], zoom_region[1])
-axes.set_ylim(zoom_region[2], zoom_region[3])
-ax_bis.set_ylim(.1, .78)
-axes.set_yscale('log')
-#axes[1].set_xlabel(r'Position ($X$)',fontsize=axes_font_size)
-# axes.set_xlabel('$X$', fontsize=axes_font_size)
-axes.set_xticks([])
-# axes.set_ylabel(r'$v$', fontsize=axes_font_size)
-axes.set_yticks([])
-ax_bis.set_yticks([])
-for axis in ['top','bottom','left','right']:
-    axes.spines[axis].set_linewidth(1.5)
-
+# axes.set_xlim(min(x),max(x))
+# axes.set_ylim(1, 1.5*v_lim)
+# axes.set_yscale('log')
+# #axes[1].set_xlabel(r'Position ($X$)',fontsize=axes_font_size)
+# axes.set_ylabel(r'Speed ($v$)',fontsize=axes_font_size)
 # #axes[1].set_title("Strategy", fontsize = title_font_size)
 # for label in (axes.get_xticklabels() + axes.get_yticklabels()):
 #     label.set_fontsize(graduation_font_size)
 
 # ax_bis = axes.twinx()
 # ax_bis.plot(x, tau, color=color_tau, linewidth = linewidth, alpha=0.6, zorder=2)
-# ax_bis.set_ylabel(r'Contact time ($\tau$)',fontsize=axes_font_size)
+# ax_bis.set_ylabel(r'Contact time ($\tau_f$)',fontsize=axes_font_size)
 # ax_bis.set_ylim(0, .8)
 # ax_bis.set_yticks([0, .2, .4, .6, .8])
 # for label in (ax_bis.get_xticklabels() + ax_bis.get_yticklabels()):
@@ -231,10 +217,56 @@ for axis in ['top','bottom','left','right']:
 
 # axes.set_xticklabels([],color='w')
 
-#axes.legend(handles=legend_elements, loc='center', fontsize = legend_font_size, frameon=False)
-#axes[1].set_aspect('equal')
+# #axes.legend(handles=legend_elements, loc='center', fontsize = legend_font_size, frameon=False)
+# #axes[1].set_aspect('equal')
 
-plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
+# plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
+
+# #plt.savefig('images/b.png', dpi=my_dpi)
+
+# # 2bis: Inset
+# fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi*.3, image_height/my_dpi*.4), dpi=my_dpi, sharex=True)
+# zoom_region = [2450, 2800, 1.5, 250]
+
+# axes.plot(x, v, color=color_v, linewidth = linewidth, zorder=1)
+# ax_bis = axes.twinx()
+# ax_bis.plot(x, tau, color=color_tau, linewidth = linewidth, alpha=0.6, zorder=2)
+
+# axes.set_xlim(zoom_region[0], zoom_region[1])
+# ax_bis.set_xlim(zoom_region[0], zoom_region[1])
+# axes.set_ylim(zoom_region[2], zoom_region[3])
+# ax_bis.set_ylim(.1, .78)
+# axes.set_yscale('log')
+# #axes[1].set_xlabel(r'Position ($X$)',fontsize=axes_font_size)
+# # axes.set_xlabel('$X$', fontsize=axes_font_size)
+# axes.set_xticks([])
+# # axes.set_ylabel(r'$v$', fontsize=axes_font_size)
+# axes.set_yticks([])
+# ax_bis.set_yticks([])
+# for axis in ['top','bottom','left','right']:
+#     axes.spines[axis].set_linewidth(1.5)
+
+# # #axes[1].set_title("Strategy", fontsize = title_font_size)
+# # for label in (axes.get_xticklabels() + axes.get_yticklabels()):
+# #     label.set_fontsize(graduation_font_size)
+
+# # ax_bis = axes.twinx()
+# # ax_bis.plot(x, tau, color=color_tau, linewidth = linewidth, alpha=0.6, zorder=2)
+# # ax_bis.set_ylabel(r'Contact time ($\tau$)',fontsize=axes_font_size)
+# # ax_bis.set_ylim(0, .8)
+# # ax_bis.set_yticks([0, .2, .4, .6, .8])
+# # for label in (ax_bis.get_xticklabels() + ax_bis.get_yticklabels()):
+# #     label.set_fontsize(graduation_font_size)
+
+# # legend_elements = [Line2D([0], [0], color='blue', label=r'Speed ($v$)'),
+# #                    Line2D([0], [0], color='grey', label=r'Contact time ($\tau$)')]
+
+# # axes.set_xticklabels([],color='w')
+
+# #axes.legend(handles=legend_elements, loc='center', fontsize = legend_font_size, frameon=False)
+# #axes[1].set_aspect('equal')
+
+# plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
 
 #plt.savefig('images/b_inset.png', dpi=my_dpi)
 
@@ -242,18 +274,19 @@ plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
 # 3
 
 fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True)
-zoom_region = [2450, 2800, 80, 150]
+# zoom_region = [2450, 2800, 80, 150]
 
 axes.plot(x, eta_list, color=color_eta, linewidth = linewidth)
 axes.plot(x, eta_m_list, color=color_eta_m, linewidth = linewidth)
-axes.plot(x, np.ones(len(x))*eta_target, color = 'black', linestyle='--', linewidth = linewidth)
-axes.plot([zoom_region[_] for _ in [0, 1, 1, 0, 0]], [zoom_region[_] for _ in [2, 2, 3, 3, 2]], color="black", linewidth=1.5)
+# axes.plot(x, np.ones(len(x))*eta_target, color = 'black', linestyle='--', linewidth = linewidth)
+axes.plot(x, np.ones(len(x))*18.096748360719197, color = 'black', linestyle='--', linewidth = linewidth)
+
 axes.set_xlim(min(x),max(x))
-axes.set_ylim(0,1.1*max(eta_list))
+# axes.set_ylim(0,1.1*max(eta_list))
 axes.set_xlabel(r'Position ($X$)',fontsize=axes_font_size)
 axes.set_ylabel(r'Feeding rate',fontsize=axes_font_size)
-axes.set_yticks([0, 50, 100, 150])
-#axes[2].set_title("Feeding rate profiles", fontsize = title_font_size)
+# axes.set_yticks([0, 50, 100, 150])
+# axes[2].set_title("Feeding rate profiles", fontsize = title_font_size)
 for label in (axes.get_xticklabels() + axes.get_yticklabels()):
     label.set_fontsize(graduation_font_size)
 
@@ -265,46 +298,46 @@ legend_elements = [Line2D([0], [0], color='blue', label=r'Feeding rate ($\eta$)'
 
 #fig.tight_layout()
 
-#plt.gca().set_axis_off()
-#plt.subplots_adjust(top = 1, bottom = 0, right = 1, left = 0, 
-#            hspace = 0, wspace = 0)
-#plt.margins(0,0)
+# #plt.gca().set_axis_off()
+# #plt.subplots_adjust(top = 1, bottom = 0, right = 1, left = 0, 
+# #            hspace = 0, wspace = 0)
+# #plt.margins(0,0)
 
-plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
+# plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
 
 #plt.savefig('images/c.png', dpi=my_dpi)
 
-fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi*.3, image_height/my_dpi*.4), dpi=my_dpi, sharex=True)
+# fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi*.3, image_height/my_dpi*.4), dpi=my_dpi, sharex=True)
 
-axes.plot(x, eta_list, color=color_eta, linewidth = linewidth)
-axes.plot(x, eta_m_list, color=color_eta_m, linewidth = linewidth)
-axes.plot(x, np.ones(len(x))*eta_target, color = 'black', linestyle='--', linewidth = linewidth)
-axes.set_xlim(zoom_region[0], zoom_region[1])
-axes.set_ylim(zoom_region[2], zoom_region[3])
-# axes.set_xlabel(r'$X$',fontsize=axes_font_size)
-# axes.set_ylabel(r'$\eta$',fontsize=axes_font_size)
-axes.set_xticks([])
-axes.set_yticks([])
-for axis in ['top','bottom','left','right']:
-    axes.spines[axis].set_linewidth(1.5)
-#axes[2].set_title("Feeding rate profiles", fontsize = title_font_size)
-for label in (axes.get_xticklabels() + axes.get_yticklabels()):
-    label.set_fontsize(graduation_font_size)
+# axes.plot(x, eta_list, color=color_eta, linewidth = linewidth)
+# axes.plot(x, eta_m_list, color=color_eta_m, linewidth = linewidth)
+# axes.plot(x, np.ones(len(x))*eta_target, color = 'black', linestyle='--', linewidth = linewidth)
+# axes.set_xlim(zoom_region[0], zoom_region[1])
+# axes.set_ylim(zoom_region[2], zoom_region[3])
+# # axes.set_xlabel(r'$X$',fontsize=axes_font_size)
+# # axes.set_ylabel(r'$\eta$',fontsize=axes_font_size)
+# axes.set_xticks([])
+# axes.set_yticks([])
+# for axis in ['top','bottom','left','right']:
+#     axes.spines[axis].set_linewidth(1.5)
+# #axes[2].set_title("Feeding rate profiles", fontsize = title_font_size)
+# for label in (axes.get_xticklabels() + axes.get_yticklabels()):
+#     label.set_fontsize(graduation_font_size)
 
-legend_elements = [Line2D([0], [0], color='blue', label=r'Feeding rate ($\eta$)'),
-                   Line2D([0], [0], color='orange', label=r'Marginal feeding rate ($\eta_m$)')]
+# legend_elements = [Line2D([0], [0], color='blue', label=r'Feeding rate ($\eta$)'),
+#                    Line2D([0], [0], color='orange', label=r'Marginal feeding rate ($\eta_m$)')]
 
-#axes.legend(handles=legend_elements, loc='upper center', fontsize = legend_font_size, frameon=False)
-#axes[2].set_aspect('equal')
+# #axes.legend(handles=legend_elements, loc='upper center', fontsize = legend_font_size, frameon=False)
+# #axes[2].set_aspect('equal')
 
-#fig.tight_layout()
+# #fig.tight_layout()
 
-#plt.gca().set_axis_off()
-#plt.subplots_adjust(top = 1, bottom = 0, right = 1, left = 0, 
-#            hspace = 0, wspace = 0)
-#plt.margins(0,0)
+# #plt.gca().set_axis_off()
+# #plt.subplots_adjust(top = 1, bottom = 0, right = 1, left = 0, 
+# #            hspace = 0, wspace = 0)
+# #plt.margins(0,0)
 
-plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
+# plt.subplots_adjust(top=top, bottom=bottom, right=right , left=left)
 
 #plt.savefig('images/c_inset.png', dpi=my_dpi)
 
