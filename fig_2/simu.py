@@ -53,7 +53,7 @@ def simu_rough(rho_init, T, t_d0, n_r, r, v_lim, eta_target):
         
         rho_depleted = depletion(rho[n:n + n_r], [t_d0, r / n_r / v, ])
         rho[n:n + n_r] = rho[n:n + n_r] - rho_depleted
-        eta = np.sum(rho_depleted) * v * np.random.uniform(1 - noise, 1 + noise)
+        eta = np.sum(rho_depleted) * v 
 
 		
 		### math rule 1 ###
@@ -133,14 +133,14 @@ def simu(rho_init, T, t_d0, n_r, r, v_lim, eta_target, noise=0, learning=False, 
 
     schedule = np.concatenate((simu_rough(rho, T, t_d0, n_r, r, v_lim, eta_target),np.zeros(tail)))
 
-    nb_of_corrections = 30 # For Alfonso to play with # Set it to 1 if you are running eta_star_vs_eta_bar.py
+    nb_of_corrections = 1 # For Alfonso to play with # Set it to 1 if you are running eta_star_vs_eta_bar, 30 else.py
     CHI_before = np.inf
 
     dt = t_min*10
 
     for iteration in tqdm.tqdm(range(nb_of_corrections)):
 
-        tolerance = 1 #0.1 for simulations that are not shown For Alfonso to play with
+        tolerance = 0.1 #0.1 for simulations that are not shown, 1 else For Alfonso to play with
         n = 0
         chi_local = np.inf
         chi = np.array([0])
@@ -165,9 +165,11 @@ def simu(rho_init, T, t_d0, n_r, r, v_lim, eta_target, noise=0, learning=False, 
             if chi.size!=0:
                 ind_list = np.where(max(abs(chi)) == abs(chi))[0]
                 ind = points_of_interest[ind_list[0]]
-                print("eta_m=", eta_m_list[ind],"position=", ind, "time=", schedule[ind], "chi=", chi[ind_list[0]], "dt=", dt, "Itération=", iteration)
-                schedule[ind] = max(schedule[ind] + np.sign(chi[ind_list[0]])*dt,t_min)
                 
+                if n%100 == 0:
+                    print("eta_m=", eta_m_list[ind],"position=", ind, "time=", schedule[ind], "chi=", chi[ind_list[0]], "dt=", dt, "Itération=", iteration)
+                
+                schedule[ind] = max(schedule[ind] + np.sign(chi[ind_list[0]])*dt,t_min)
                 verif_remaining_rho = compute_rho_f(schedule,rho)
                 verif_eta_m_list = compute_eta_m(verif_remaining_rho)
                 verif_points_of_interest = np.where(np.logical_or(verif_eta_m_list>eta_target,schedule>t_min))[0]
@@ -184,7 +186,9 @@ def simu(rho_init, T, t_d0, n_r, r, v_lim, eta_target, noise=0, learning=False, 
                 
                 if new_CHI>CHI:
                     #schedule[ind] = schedule[ind] - np.sign(chi[ind_list[0]])*dt
-                    dt = dt*0.99 # For Alfonso to play with
+                    dt = dt*0.999 # For Alfonso to play with
+                    # 0.99 for simu to display
+                    
                     # 0.999 for rho_0
                     # for rho_1
                     # for rho_2

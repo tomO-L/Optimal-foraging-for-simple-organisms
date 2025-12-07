@@ -23,7 +23,7 @@ T = 100
 #with open("../environment_test_1.pkl", 'rb') as fileopen:
 #    rho = dill.load(fileopen) * 10
 
-for i_env in [0, 1, 2]:
+for i_env in [0,1,2,3]:
 
     rho = np.load(os.path.join(script_dir_parent, f'rho_{i_env}.npy'))
 
@@ -68,7 +68,7 @@ for i_env in [0, 1, 2]:
     #    dill.dump([eta_m_star,eta_bar], file_to_write)    
     np.save(os.path.join(script_dir, f'opt_math_{i_env}.npy'), [eta_m_star,eta_bar])
 
-for i_env in [0, 1, 2]:
+for i_env in [0,1,2,3]:
 
     rho = np.load(os.path.join(script_dir_parent, f'rho_{i_env}.npy'))
 

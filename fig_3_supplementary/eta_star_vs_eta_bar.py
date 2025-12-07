@@ -21,7 +21,7 @@ rho_s = 5
 
 T = 100
 
-for i_env in [0, 1, 2]:
+for i_env in [0, 1, 2, 3]:
 
     rho = np.load(os.path.join(script_dir_parent, f'rho_{i_env}.npy'))
     
@@ -44,10 +44,10 @@ for i_env in [0, 1, 2]:
         time_felt = []
         for i in range(len(schedule)):
             time_felt.append(np.sum(schedule[i-n_r+1:i+1]))
-        time_felt = np.array(time_felt)[tail*2:-tail]
-        schedule = schedule[tail*2:-tail]
+        time_felt = np.array(time_felt)[tail*2:-tail-1]
+        schedule = schedule[tail*2:-tail-1]
     
-        density_eaten = simu.actual_depletion(rho, [t_d0, rho_s, time_felt])[tail*2:-tail]
+        density_eaten = simu.actual_depletion(rho[:-1], [t_d0, rho_s, time_felt])[tail*2:-tail-1]
         
         total_food_eaten = np.sum(density_eaten)*r/n_r
     

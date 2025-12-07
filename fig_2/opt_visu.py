@@ -8,6 +8,17 @@ import os
 script_dir = os.path.dirname(__file__)
 script_dir_parent = os.path.abspath(os.path.join(script_dir, os.pardir))
 
+rho_3 = np.load(os.path.join(script_dir_parent, "rho_3.npy"))
+
+x = np.arange(len(rho_3))
+
+plt.fill_between(x, rho_3, color = 'darkgreen', step="mid")
+plt.xlabel('Position (X)')
+plt.ylabel("Food density")
+plt.show()
+
+input()
+
 ## Plots ###
 
 my_dpi = 96
@@ -22,7 +33,7 @@ factor_inset = 2
 image_width = 1200
 image_height = 1200 #388
 
-color_rho = [(102/255,166/255,30/255), (230/255,171/255,2/255), (166/255,118/255,29/255) ]
+color_rho = [(102/255,166/255,30/255), (230/255,171/255,2/255), (166/255,118/255,29/255), 'red' ]
 color_v = (117/255,112/255,179/255)
 color_tau = (231/255,41/255,138/255)
 color_eta = (27/255,158/255,119/255)
@@ -44,12 +55,13 @@ left=0.15
 # 1
 fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True, num='Figure 2')
 
-for i in range(3):
+for i in range(4):
 
     # with open(f"opt_{i}.pkl", 'rb') as fileopen:
     #     x,y = dill.load(fileopen)
     aux = np.load(os.path.join(script_dir, f"opt_{i}.npy"))
     x = aux[0]
+    print(x)
     y = aux[1]
 
     axes.plot(x, y, color = color_rho[i], zorder=2, linewidth=linewidth)

@@ -20,7 +20,7 @@ rho_s = 5
 
 T = 100
 
-for i_env in [0, 1, 2]:
+for i_env in [3]:
 
     rho = np.load(os.path.join(script_dir_parent, f'rho_{i_env}.npy'))
     

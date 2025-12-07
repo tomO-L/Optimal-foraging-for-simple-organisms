@@ -24,7 +24,7 @@ factor_inset = 2
 image_width = 1200
 image_height = 1200 #388
 
-color_rho = [(102/255,166/255,30/255), (230/255,171/255,2/255), (166/255,118/255,29/255) ]
+color_rho = [(102/255,166/255,30/255), (230/255,171/255,2/255), (166/255,118/255,29/255), 'red' ]
 color_v = (117/255,112/255,179/255)
 color_tau = (231/255,41/255,138/255)
 color_eta = (27/255,158/255,119/255)
@@ -46,7 +46,7 @@ fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), 
 
 axes.plot(np.linspace(0,200,2),np.linspace(0,200,2), linestyle=':', linewidth=linewidth, color='black', zorder=1)
 
-for i in range(3):
+for i in range(4):
 
     #with open(f"opt_intermitent_{i}.pkl", 'rb') as fileopen:
     #    x_intermitent,y_intermitent = dill.load(fileopen)

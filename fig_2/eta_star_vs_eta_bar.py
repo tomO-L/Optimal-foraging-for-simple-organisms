@@ -30,7 +30,7 @@ T = 100
 #with open("../environment.pkl", 'rb') as fileopen:
 #    rho = dill.load(fileopen) * 10
 
-for i_env in [0, 1, 2]:
+for i_env in [0,1,2]:
 
     rho = np.load(os.path.join(script_dir_parent, f'rho_{i_env}.npy'))
     
