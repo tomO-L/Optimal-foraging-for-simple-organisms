@@ -13,7 +13,7 @@ rho_3 = np.load(os.path.join(script_dir_parent, "rho_3.npy"))
 x = np.arange(len(rho_3))
 
 plt.fill_between(x, rho_3, color = 'darkgreen', step="mid")
-plt.xlabel('Position (X)')
+plt.xlabel('Position (S)')
 plt.ylabel("Food density")
 plt.show()
 

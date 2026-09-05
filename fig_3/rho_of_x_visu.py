@@ -65,7 +65,7 @@ bottom=0.22
 right=0.9
 left=0.15
 
-fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True)
+fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi, image_height/my_dpi), dpi=my_dpi, sharex=True, num='Figure 3')
 
 pos_txt_x = 1.025
 pos_txt_y = 1
@@ -79,7 +79,7 @@ axes.plot([70, 70], [0, y_max], color=color_meta, linewidth=linewidth, linestyle
 axes.set_ylim(0, y_max)
 axes.set_xlim(20,80)
 
-axes.set_xlabel(r'Position ($X$)',fontsize=axes_font_size)
+axes.set_xlabel(r'Position ($S$)',fontsize=axes_font_size)
 axes.set_ylabel(r'Food density ($\rho$)',fontsize=axes_font_size)
 axes.set_xticks([])
 axes.set_yticks([0, 5, 10])

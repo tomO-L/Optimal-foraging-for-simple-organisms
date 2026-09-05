@@ -59,7 +59,7 @@ axes.fill_between(np.linspace(0,len(rho)-1,len(rho)), rho, color = color_rho[0],
 #axes.set_ylim(0,1.1 * max(rho))
 #axes.set_xlim(40,80)
 
-axes.set_xlabel(r'Position ($X$)',fontsize=axes_font_size)
+axes.set_xlabel(r'Position ($S$)',fontsize=axes_font_size)
 axes.set_ylabel(r'Density ($\rho$)',fontsize=axes_font_size)
 
 for label in (axes.get_xticklabels() + axes.get_yticklabels()):
@@ -79,7 +79,7 @@ axes.fill_between(np.linspace(0,len(rho_1)-1,len(rho_1)), rho_1, color = color_r
 #axes.set_ylim(0,1.1 * max(rho))
 #axes.set_xlim(40,80)
 
-axes.set_xlabel(r'Position ($X$)',fontsize=axes_font_size)
+axes.set_xlabel(r'Position ($S$)',fontsize=axes_font_size)
 axes.set_ylabel(r'Density ($\rho$)',fontsize=axes_font_size)
 
 for label in (axes.get_xticklabels() + axes.get_yticklabels()):
@@ -99,7 +99,7 @@ axes.fill_between(np.linspace(0,len(rho_2)-1,len(rho_2)), rho_2, color = color_r
 #axes.set_ylim(0,1.1 * max(rho))
 #axes.set_xlim(40,80)
 
-axes.set_xlabel(r'Position ($X$)',fontsize=axes_font_size)
+axes.set_xlabel(r'Position ($S$)',fontsize=axes_font_size)
 axes.set_ylabel(r'Density ($\rho$)',fontsize=axes_font_size)
 
 for label in (axes.get_xticklabels() + axes.get_yticklabels()):

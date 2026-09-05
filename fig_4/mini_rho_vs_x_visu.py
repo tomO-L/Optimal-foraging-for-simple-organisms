@@ -4,10 +4,12 @@ from matplotlib.lines import Line2D
 from matplotlib.patches import Patch
 import scipy as sp
 import dill
+import os
 
+script_dir = os.path.dirname(__file__)
 name = "simulation"
 
-with open(f"{name}/{name}.pkl", 'rb') as fileopen:
+with open(os.path.join(script_dir,name,f"{name}.pkl"), 'rb') as fileopen:
         inpt, outpt = dill.load(fileopen)
 
 from simu import depletion, gamma_of_rho
@@ -95,7 +97,7 @@ left=0.15
 
 for i in range(4):
 
-    fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi*.6, image_height/my_dpi), dpi=my_dpi, sharex=True)
+    fig,axes = plt.subplots(1,1, figsize=(image_width/my_dpi*.6, image_height/my_dpi), dpi=my_dpi, sharex=True, num='Figure 4')
 
     axes.fill_between(x, np.ones(20*n_r) * 10, color = color_rho, step='mid')#axes.set_xlim(T[599+n_r],T[599+3*n_r+1]) ### tom
     axes.fill_between(x, rho_list[i], color = 'black', alpha = 0.4, step='mid')#axes.set_xlim(T[599+n_r],T[599+3*n_r+1])
@@ -107,7 +109,7 @@ for i in range(4):
     axes.set_xlim(window+20,window+150)
     axes.set_xticks([])
     if i == 3:
-        axes.set_xlabel('Position ($X$)', fontsize=axes_font_size)
+        axes.set_xlabel('Position ($S$)', fontsize=axes_font_size)
     axes.set_ylim(0, 12)
     axes.set_yticks([0, 5, 10])
     axes.set_ylabel(r'Density ($\rho$)',fontsize=axes_font_size)
